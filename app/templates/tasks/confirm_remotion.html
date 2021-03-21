@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card mb-3">
+    <div class="card-header">
+        Do you really want to delete this task?
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text"> {{ task.description }} </p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn badge bg-danger" type="submit">Remove</button>
+        </form>
+    </div>
+    <div class="card-footer">
+        {{ task.expiration_date }}
+    </div>
+</div>
+
+{% endblock content %}

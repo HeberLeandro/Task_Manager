@@ -1,4 +1,4 @@
-class Task():
+class Task:
     def __init__(self, title, description, expiration_date, priority):
         self.__title = title
         self.__description = description
