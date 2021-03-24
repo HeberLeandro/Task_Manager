@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col col-6 align-items-center my-5">
+
+        <h5 class="h5 mb-4">Sign In</h5>
+        <form method="post">
+            {% csrf_token %}
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="form-group mb-2">
+                {{ singin_form.username.errors }}
+                <label class="form-label">username </label>
+                {{ singin_form.username|addclass:'form-control' }}
+            </div>
+            <div class="form-group">
+                {{singin_form.password.errors }}
+                <label class="form-label">Password </label>
+                {{ singin_form.password|addclass:'form-control' }}
+                <a class="d-block mb-2 text-decoration-none" href="{% url 'signup' %}"><small>Don't you have an account?</small></a>
+            </div>
+            <div class="form-group my-4">
+                <input type="submit" class="btn btn-outline-primary" value="Get in">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
